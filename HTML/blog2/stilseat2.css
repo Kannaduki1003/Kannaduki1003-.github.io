@@ -1,0 +1,108 @@
+.c-both{clear:both}
+dt{color:#633;font-weight:700;margin-top:1em}
+pre{line-break:strict;margin-right:2em;padding:.5em;word-break:break-all;word-wrap:break-word;background-color:#f0f8ff;border-color:#889 #dde #dde #889;border-style:solid;border-width:1px;color:#000;overflow:auto}
+em{font-style:italic}
+.small,.small1{font-size:90%}
+.super_index,a.note_super{background-color:inherit;color:#d33;font-size:65%;font-weight:700;vertical-align:super}
+
+img#logo{float:left;margin-right:20px}
+.clear{clear:both;display:block}
+
+blockquote{border:1px solid #d5d5d5;margin-bottom:.5em;margin-top:.5em}
+blockquote p{margin:.5em 1em}
+
+.dummyblock{display:block;float:left;width:77%}
+.center_form{margin:0;padding:4px 0 9px;text-align:center}
+
+th.attach_th{background-color:#fec;color:inherit;margin:1px;padding:2px;text-align:center}
+td.attach_td1{background-color:#fff}td.attach_td2{background-color:#f5f5f5}
+#signature a{-webkit-text-decoration:none;text-decoration:none}
+#signature a,#signature a:active,#signature a:visited{color:#f60;padding:0 5px}
+#signature a:hover{color:#f82;padding:0 5px}
+
+.wiki-source>code{font-family:Verdana,Arial,Hiragino Kaku Gothic ProN,Hiragino Sans,Meiryo,sans-serif}
+.wiki-source:not(pre)>code{white-space:pre-wrap}
+pre.wiki-source>code{white-space:pre}
+.result-message{background-color:#ffe;border:1px solid #666;border-radius:6px;color:#333;margin:0 0 1em;padding:10px 20px}
+.result-message .result-message-icon{color:#666;font-size:14px}
+.warning-message{background-color:#f8d7da;border:1px solid #666;border-radius:6px;color:#333;margin:0 0 1em;padding:10px 20px}
+.warning-message .warning-message-icon{color:#666;font-size:14px}
+
+input[name=attach],input[name=attach_file]{margin:8px 0}
+
+.h-scrollable{overflow-x:auto;text-align:left}
+
+.toolbar img{vertical-align:middle}
+
+select#report_comment{height:2em;margin:.5em 0;width:100%}
+
+.included-page-link-box{background-color:transparent;border:0;color:#c00;font-family:Verdana,Arial,Hiragino Kaku Gothic ProN,Hiragino Sans,Meiryo,sans-serif;font-size:20px;font-weight:700;margin:.2em 0 .2em .5em}
+
+/*# sourceMappingURL=skin-default-54aea2d5137761c4d83e.min.css.map*/
+
+/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+
+main{display:block}
+
+pre{font-family:monospace,monospace;font-size:1em}
+a{background-color:transparent}
+abbr[title]{border-bottom:none;-webkit-text-decoration:underline;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}
+b,strong{font-weight:bolder}
+code,kbd,samp{font-family:monospace,monospace;font-size:1em}
+small{font-size:80%}
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
+sub{bottom:-.25em}
+sup{top:-.5em}
+
+button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}
+button,input{overflow:visible}
+button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}
+[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}
+[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}
+fieldset{padding:.35em .75em .625em}
+legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}
+progress{vertical-align:baseline}
+textarea{overflow:auto}
+[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}
+[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}
+[type=search]{-webkit-appearance:textfield;outline-offset:-2px}
+[type=search]::-webkit-search-decoration{-webkit-appearance:none}
+::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}
+details{display:block}
+summary{display:list-item}
+[hidden],template{display:none}
+
+a:hover img{filter:brightness(110%) saturate(80%)}
+.rtcomment button.post,button,input[type=button],input[type=submit]{background-color:#efefef;border:1px solid #aaa;border-radius:.25em;color:#000;cursor:pointer;font-family:Verdana,Arial,Hiragino Kaku Gothic ProN,Hiragino Sans,Meiryo,sans-serif;font-weight:400;line-height:1.2em;padding:.375em 1em}
+button:hover:not(button[disabled]),input[type=button]:hover:not(button[disabled]),input[type=submit]:hover:not(button[disabled]){background-color:#dcdcdc}
+button[disabled],input[type=button][disabled],input[type=submit][disabled]{border-color:#ddd;color:#aaa;cursor:not-allowed}
+input[type=email],input[type=number],input[type=password],input[type=search],input[type=text],input[type=url],select,textarea{border:1px solid #ccc;border-radius:.25em;font-family:Verdana,Arial,Hiragino Kaku Gothic ProN,Hiragino Sans,Meiryo,sans-serif;padding:.375em}
+input[type=search]{-webkit-appearance:none;background-color:#fff;font-family:Verdana,Arial,Hiragino Kaku Gothic ProN,Hiragino Sans,Meiryo,sans-serif;outline-offset:0}
+select{background:#fff;color:#000;height:2.26em}select[size]{height:auto}
+textarea{font-size:12px;height:8.9em;line-height:1.6em;max-width:100%}
+input[type=file]{font-family:Verdana,Arial,Hiragino Kaku Gothic ProN,Hiragino Sans,Meiryo,sans-serif}
+.pukiwiki-show-fontset-img,input,textarea{margin-bottom:2px;margin-top:2px}
+.article_conflict textarea[name=msg],.article_form textarea[name=msg],.bugtrack_form textarea[name=body],.edit_form textarea[name=areaedit_msg],.edit_form textarea[name=msg],.insert_conflict textarea[name=msg],.insert_form textarea[name=msg],.memo_conflict textarea[name=msg],.memo_form textarea[name=msg],.memox_conflict textarea[name=msg],.memox_form textarea[name=msg]{width:100%}
+.article_form textarea[cols="70"]{max-width:70em}.bugtrack_form textarea[cols="60"]{max-width:60em}
+
+pre.aa{font-family:�ｭ�ｳ �ｰ繧ｴ繧ｷ繝�け,MS PGothic,RobotoJAA,Monapo,IPA 繝｢繝翫� P繧ｴ繧ｷ繝�け,IPAMonaPGothic,Mona,譴�P繧ｴ繧ｷ繝�け,Textar,sans-serif!important;font-size:16px;letter-spacing:0;line-height:18px}
+
+.day{float:left;font-size:200%;font-weight:400;letter-spacing:.02em;line-height:100%;margin:3pt 4pt 0 0;padding:3pt 3pt 3pt 4pt}
+
+.nobr,.nobr td,.nobr th{white-space:nowrap}
+.nobr{overflow-x:auto}
+img,input[type=text],textarea{max-width:100%}
+.nobr img,.nobr input[type=text],.nobr textarea{max-width:none}
+.noscript-alert{background-color:#666;color:#fff;font-size:12px;padding:6px;position:sticky;top:0;z-index:9999}
+.noscript-alert i{color:#fc6}
+
+#responsive-navigation #responsive-navigation-drawer{display:none}
+
+.showrss2-timestamp{font-size:90%;font-weight:700}
+
+.splitinclude-included-page{margin:0 2px}
+
+@keyframes sk-stretchdelay{0%,40%,to{transform:scaleY(.5);-webkit-transform:scaleY(.5)}20%{transform:scaleY(1);-webkit-transform:scaleY(1)}}
+
+
+

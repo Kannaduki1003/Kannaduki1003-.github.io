@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html" charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>手取り155,350円</title>
+    <meta name="description" content="このWebサイトは、初めてHTMLで作るブログページです。">
+    <link rel="stylesheet" href="stylesheet.css">
+
+
+
+<head>
+ <title>手取り155,350円</title>
+ <meta charset="UTF-8" />
+ <link href="styles.css" rel="stylesheet" />
+
+</head>
+
+<body>
+<div class="header">●【手取り155,350円】</div>
+<main id="main">
+ <h1>初任給手取り155,350円</h1>
+ <img src="img/sample.jpg">
+ <h2>このブログについて</h2>
+ 初任給が手取り155,350円の専門卒生のブログです。<br>
+ 日常、ゲームのことなどを備忘録的に書いていきます
+ <h3>概要</h3> 
+ 義務教育、高校を経て専門学校(2年制)を卒業後、<br>
+ 製造業で労働中の社会人1年目<br>
+ 趣味：ゲーム、ネットサーフィン、フィギュア、プラモデル
+ </main>
+ 
+<div class="side">
+ <p>サイドバー</p>
+</div> 
+
+</div>
+</body>
+</html>

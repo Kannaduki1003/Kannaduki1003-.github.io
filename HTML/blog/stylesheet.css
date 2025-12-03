@@ -1,0 +1,60 @@
+/* 全て共通 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0; 
+  overflow-wrap: break-word;
+  word-wrap: break-word; 
+}
+
+/* headerタグ */
+.header {
+  height: 48px;
+  
+}
+
+/* bodyタグ */
+body {
+  text-align: center; /* 全ての要素を真ん中に */
+  padding: 50px 0; /* 上下の空白を指定 */
+}
+
+/* h1タグ */
+h1 {
+  padding: 30px 0; 
+}
+
+/* h2タグ */
+h2 {
+  background-color: #999999; /* 背景色を指定 */
+  color: #ffffff; /* フォントカラーを指定 */
+  width: 600px; /* 横幅を指定 */
+  padding: 5px 0; /* 上下の空白を指定 */
+  margin: 20px auto; /* 上下の空白と真ん中に寄せる指定 */
+}
+
+/* h3タグ */
+h3 {
+  background-color: #F5F5F5; /* 枠線を指定 */
+  width: 600px; 
+  padding: 5px 0;
+  margin: 20px auto; 
+}
+
+/* pタグ */
+p {
+ font-size: 14px; /* フォントサイズを指定 */
+}
+
+/* ulタグの指定 */
+ul {
+  border: 3px solid #F5F5F5;
+  width: 600px;
+  padding: 10px 0;
+  margin: 20px auto;
+}
+
+li {
+  list-style: none; /* リストの表示方法を指定 */
+  padding: 5px 0;
+}

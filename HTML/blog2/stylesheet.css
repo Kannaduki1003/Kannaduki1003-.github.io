@@ -1,0 +1,72 @@
+body {
+  margin: 0;
+  padding: 0;
+  width: 960px;
+  margin:auto
+}
+#header {
+  box-sizing: border-box;
+  background: #ccc;
+  height: 50px;
+  width: 983px;
+}
+#main {
+  box-sizing: border-box;
+  margin-left: 220px;
+  padding: 20px 40px;
+}
+#sub {
+  box-sizing: border-box;
+  top: 50px;
+  height: 100%;
+  width: 220px;
+  position: flex;
+  background: #eee;
+  padding: 20px;
+  margin-bottom: 0;
+}
+
+/* h1タグ */
+h1 {
+  
+  background:rgb(235,235,235);
+  border: 1px solid #E1E1E1;  /* 枠線 */
+  background-color: #F5F5F5;
+  color: #D95131;
+  width: 713px;
+  padding: 15px 0; 
+  margin: 10px ;
+}
+
+/* h2タグ */
+h2 {
+  background-color: #999999; /* 背景色を指定 */
+  color: #000; /* フォントカラーを指定 */
+  width: 713px; /* 横幅を指定 */
+  background: linear-gradient(to right, #000 0%, #000 4%, #DDDDDD 4%,  #DDDDDD 100%); /*(色の方向, 1色目 0%, 1色目 50%, 2色目 50%, 2色目 100%)*/
+  padding: 5px 0; /* 上下の空白を指定 */
+  padding-left: 35px;
+  margin: 10px ; /* 上下の空白と真ん中に寄せる指定 */
+}
+
+/* h3タグ */
+h3 {
+  background-color: #F5F5F5; /* 枠線を指定 */
+  border: 2px solid #808080;
+  background: linear-gradient(to right, #808080 0%, #808080 4%, #fff 4%,  #fff 100%); /*(色の方向, 1色目 0%, 1色目 50%, 2色目 50%, 2色目 100%)*/
+  width: 713px; 
+  padding: 5px 0;
+  padding-left: 35px;
+  margin: 10px ; 
+}
+
+/* h3タグ */
+h4 {
+  color: #fff;
+  background-color: #F5F5F5; /* 枠線を指定 */
+  border: 1px solid #000;
+  background: #333333 ; 
+  padding: 5px 0;
+  padding-left: 35px;
+  margin: 10px ; 
+}

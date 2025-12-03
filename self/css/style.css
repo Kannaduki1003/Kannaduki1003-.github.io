@@ -1,0 +1,61 @@
+@charset "utf-8";
+body{
+	background-color: #CC1922;
+	background-image: url(../img/backgroundimg.png);
+	background-attachment: fixed; /*背景画像固定*/
+	font-family: "WDXL Lubrifont JP N", sans-serif;
+  	font-weight: 400;
+  	font-style: normal;
+}
+
+header{
+	background-color: #120938;
+	padding: 2em;
+}
+div.wrap{
+	width: 1200px;
+	border: 3px solid #AFEAFA;
+	margin: 0 auto;
+	background-color: #880088;
+	box-sizing: border-box;
+}
+h1{
+	margin: 150;
+	display: flex;
+	align-content: center;
+	border:2px solid #CCCCCC;
+	border-radius:5px;
+}
+h1 img,h1{
+	display: flex;
+}
+main{
+	padding: 2em;
+}
+p,ul,ol{
+	width: 750px;
+	background-color: #FFFFEE;
+	padding: 16px;
+	border-radius: 10px;
+	font-size: 2rem;
+}
+
+ul,ol{
+	list-style-position: inside;
+}
+h1,h2{
+	width: 500px;
+	/*size: 2rem;*/
+	color: #ff1111;
+	background-color: #009999;
+}
+h2{
+	border:2px solid;border-left:15px solid;
+	border-color: #333333;
+}
+footer{
+	background-color: #9E218E;
+	height: 100;
+	padding: 2em;
+	
+}

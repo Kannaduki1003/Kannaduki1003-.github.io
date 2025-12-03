@@ -1,0 +1,931 @@
+@charset "UTF-8"; /* ファイルの文字コードをUTF-8に設定 */
+
+:root {
+  --header-height: 100px;/* ヘッダーの高さをここで管理 */
+  --sns-link-img-he:100px;/* SNSアイコンの高さをここで管理 */
+  --sns-link-img-wi:100px;/* SNSアイコンの幅をここで管理 */
+
+  /* ===== ベースカラー変数 ===== */
+  /* ダークテーマ */
+  --bg-color: #1a1625; /* 上から、背景、文字、ヒーロー部分、ヘッダー、フッター背景、フッター文字、アクセントの色設定 */
+  --text-color: #dcd6e8;
+  --hero-text-color: #f3edff;
+  --header-bg: rgba(51,43,80,0.6);
+  --footer-bg: #1a1625;
+  --footer-text: #dcd6e8; /* 明るい文字色に統一 */
+  --accent-color: #c9baff;
+
+  --section-bg-color: rgba(255, 255, 255, 0.1); /* 各sectionの背景色 */
+  --box-shadow: rgba(180, 150, 255, 0.15); /* 箱の影の色 */
+  --bottom-color: #c9baff;
+  --hover-color: rgb(0,0,0);
+  --item-color: rgba(255, 255, 255, 0.18);
+  --white-color:rgb(255,255,255);
+  ---black-color:rgb(0,0,0);
+}
+
+/* ライトテーマ */
+body.light {
+  --bg-color: #f3f0fb; /* 上から、背景、文字、ヒーロー部分、ヘッダー、フッター背景、フッター文字、アクセントの色設定 */
+  --text-color: #2a2240;
+  --hero-text-color: #2a2240;
+  --header-bg: rgba(255, 255, 255, 0.9);
+  --footer-bg: #f3f0fb;
+  --footer-text: #2a2240;
+  --accent-color: #c9baff;
+  --section-bg-color: rgba(255, 255, 255, 0.6); /* 各sectionの背景色 */
+  --bottom-color: #c9baff;
+  --hover-color: rgb(0,0,0);
+  --item-color: #ebe6ff;
+  --white-color:rgb(255,255,255);
+  ---black-color:rgb(0,0,0);
+}
+
+/* ↓===== 基本設定 ===== */
+body {
+  margin: 0; /* ページの余白をリセット */
+  font-family: 'Noto Sans JP', sans-serif; /* 日本語フォント指定 */
+  background-color: var(--bg-color); /* 色をテーマ変数で設定 */
+  color: var(--text-color); /* 色をテーマ変数で設定 */
+  transition: background-color 0.4s ease, color 0.4s ease; /* テーマ切替時のふわっとアニメ */
+}
+
+a {
+  text-decoration: none;  /* リンクの下線を消す */
+  color: inherit; /* 親要素の色を引き継ぐ */
+}
+
+/* ===== ヘッダー ===== */
+#header {
+  position: relative;        /* ← 固定位置にする。ヘッダー位置を相対指定 */
+  top: 0; /* 上端に固定 */
+  left: 0; /* 左端に固定 */
+  width: 100%; /* 横幅いっぱい */
+  height: var(--header-height); /* 変数で指定した高さ */
+  display: flex; /* 中身をフレックス配置 */
+  align-items: center; /* 縦方向中央揃え */
+  justify-content: space-between; /* 両端に配置 */
+  padding: 0 4%; /* 左右余白4% */
+  background-color: var(--header-bg); /* 背景に透過色 */
+  backdrop-filter: blur(8px); /* 背景をぼかす（ガラス風） */
+  box-sizing: border-box; /* パディング込みのサイズ計算 */
+  z-index: 900;          /* ← ヘッダーを最前面に */
+}
+
+
+/* ロゴ全体（日本語＋英語） */
+.logo {
+  display: flex; /* 横並び配置 */
+  flex-direction: column; /* 上下に英語・日本語ロゴを積む */
+  align-items: flex-end; /* ロゴ全体を右端に寄せる（右揃え） */
+  justify-content: center; /* 上下方向の中央揃え */
+  gap: 4px; /* ロゴ同士の間隔（上下の余白） */
+  transform-origin: right center; /* アニメーションや拡大時の基準を右中央に 拡大縮小時も右基準 */
+  overflow: hidden; /* ロゴはみ出し防止（スライドアニメ時にも有効） */
+}
+
+.logo a {
+  display: inline-block; /* 画像をブロック的に扱いつつ横方向に並べられるように */
+  margin-right: 10px; /* ロゴの右側に少し余白（窮屈さを防ぐ） */
+}
+
+.logo img {
+  display: block; /* 行間の隙間を防ぐ（画像をインライン要素として扱わない） */
+  max-height: 42px; /* 高さの上限を設定（はみ出し防止）  この値を超えないように制限 */
+  object-fit: contain; /* アスペクト比を維持しつつ収まるように調整 */
+  filter:
+    brightness(1.1)          /* 少し明るく */
+    contrast(1.2)            /* コントラストをやや強調 */
+    drop-shadow(0 0 2px rgba(255, 255, 255, 0.6))  /* 白いぼかし光 */
+    drop-shadow(0 0 6px rgba(210, 230, 255, 0.5))  /* 外側に淡い青みの光 */
+    drop-shadow(0 0 1px rgba(60, 60, 60, 0.4));    /* 薄いグレーで縁取り風 */;
+}
+
+/* 日本語ロゴ */
+.logo-ja img {
+  height: 42px; /* 明示的に高さ指定（大きめ・メインロゴ） */
+  max-height: 42px; /* 上限も同値で固定 */
+}
+
+/* 英語ロゴ */
+.logo-en {
+  padding-right: 8px; /* 英語ロゴだけ少し内側に余白を確保（位置調整） */
+}
+
+.logo-en img {
+  height: 24px; /* 英語ロゴはサブタイトル扱いで小さめ */
+  max-height: 24px; /* 上限も同値で固定 */
+}
+
+/* ===== ナビゲーション ===== */
+.main-nav {
+  display: flex;           /* 親メニュー横並び （フレックスボックス） */
+  align-items: center;     /* 各項目を上下中央揃え */ 
+  gap: 32px;               /* メニュー間の余白（横方向の余白） */
+}
+
+.main-nav ul {
+  list-style: none; /* デフォルトのリストマーカーを削除 */
+  margin: 0; /* 外側余白をリセット（余白ズレ防止） */
+  padding: 0; /* 内側余白もリセット */
+  /* gap: 32px; ← ul単位ではなく .main-nav に適用しているためコメントアウト */
+}
+
+.main-nav li {
+  position: relative;      /* ドロップダウンメニューを絶対配置で扱うための基準位置にする */
+}
+
+.main-nav a {
+  display: block; /* a要素をブロック化してクリック範囲を拡大 */
+  /* padding: 8px 0; ← メニュー高さ調整が必要な場合に使用 */
+  color: var(--text-color); /* テーマに応じた文字色（変数で管理） */
+  font-weight: 500; /* 少し太めの文字で見やすく */
+  transition: color 0.3s; /* ホバー時の色変化をなめらかに */
+}
+
+.main-nav a:hover {
+  color: var(--accent-color); /* ホバー時にアクセントカラーへ変化（視覚的反応） */
+}
+
+.nav-top{
+  padding: 8px 0; /* メニュー項目の上下余白を確保（クリックしやすくする） */
+}
+
+/* テーマ切替ボタン */
+#theme-toggle {
+  background: none; /* 背景を消してアイコンのみ表示 */
+  border: none; /* ボタン枠を非表示 */
+  font-size: 1.2rem; /* アイコンサイズをやや大きめに設定 */
+  cursor: pointer; /* ホバー時にカーソルをポインタ（クリック可能であることを示す） */
+  color: var(--text-color); /* 現在のテーマに合わせた色を使用 */
+  transition: color 0.3s; /* カラー変化をスムーズに */
+}
+
+/* =============================
+   テーマ設定（ライト／ダーク）
+============================= */
+
+
+/* ===== ドロップダウンメニュー ===== */
+.dropdown-menu {
+  /* ↓ここをいじればドロップダウンが出続ける */
+  display: none; /* 初期状態では非表示（ホバー時に表示） */
+  position: absolute; /* 親要素（.dropdown）を基準に絶対配置 */
+  top: 100%; /* 親メニューのすぐ下に配置 */
+  left: 0; /* 親の左端に揃える */
+  background-color: var(--header-bg);
+  border-radius: 6px; /* 角を少し丸めて柔らかい印象に */
+  box-shadow: 0 4px 12px rgba(var(--hover-color)/0.2); /* 下方向に影を落として浮き上がる効果 */
+  flex-direction: column; /* 内部のメニューを縦方向に並べる */
+  min-width: 150px; /* メニューの最小幅を確保（狭くなりすぎ防止） */
+  z-index: 2000; /* ← これで確実にヒーロー画像より上 */
+}
+
+/* ドロップダウンメニュー内の上・中・下の余白設定 */
+.dropdown-top{
+  padding: 10px 0px 2.5px 10px; /* 上部にやや広めの余白を確保 */
+}
+
+.dropdown-cell{
+  padding: 2.5px 0px 2.5px 10px; /* 各項目間に均等な余白を設定 */
+}
+
+.dropdown-bottom{
+  padding: 2.5px 0px 10px 10px; /* 下部に広めの余白を設定 */
+}
+
+/* ================================
+   PCサイズ以上（769px～）での表示制御
+   ================================ */
+/* ホバーで表示（PC用） */
+@media (min-width: 769px) {
+  .dropdown:hover > .dropdown-menu {
+    display: flex;   /* 親メニューにホバー時、ドロップダウンを表示（縦並び） */
+  }
+}
+
+/* ドロップダウン内リンク */
+.dropdown-menu li{
+  display: block; /* 各リスト項目をブロック要素として縦並びに */
+}
+
+.dropdown-menu li a {
+  display: block; /* aタグ全体をクリック可能に */
+  /* padding: 10px 0px 0px 10px;  ← 必要に応じてクリック範囲を広げる場合に使用*/
+  white-space: nowrap; /* テキストの折り返しを防止（横幅が足りなくても一行） */
+  border-bottom: 1px solid var(--white-color)/0.1; /* 下線で項目を区切る（控えめな透明線） */
+}
+
+.dropdown-menu li:last-child a {
+  border-bottom: none; /* 最後の項目だけ下線を非表示にしてスッキリ見せる */
+}
+
+.dropdown-menu li a:hover {
+  background-color: var(--white-color)/0.1; /* ホバー時に背景を薄く強調して反応を見せる */
+}
+
+/* ハンバーガーメニューアイコン */
+#nav-toggle {
+    position: absolute; /* ヘッダー内で絶対配置 */
+    top: 50%; /* ヘッダーの中央 */
+    transform: translateY(-50%); /* 自身の高さ分を上にずらして完全に中央に揃える */
+  }
+
+
+/* ===== メイン ===== */
+main {
+  position: relative; /* 後続の要素（例えばheroなど）との重なり順を調整可能にするため */
+  z-index: 0;   /* 初期状態の重なり順を明示（背景より上、ヘッダーなどより下に） */
+}
+
+/* ===== Heroセクション ===== */
+/* ヒーローセクション全体 */
+.hero {
+  position: relative; /* テキストやオーバーレイを内部で絶対配置できるようにする */
+  width: 100%; /* 横幅をウィンドウ幅いっぱいに */
+  height: 100vh; /* 高さをブラウザの表示領域全体（1画面分）に */
+  background-image: url("../img/hero/hero4.png");
+  background-repeat: no-repeat; /* 背景を繰り返さない */
+  background-position: center; /* 画像を中央に配置 */
+  background-size: cover; /* 画像を縦横比を保って全体にフィット */
+   /*center center / cover no-repeat;  背景画像を中央に配置し、縦横比を保ちながら全体をカバー */
+  display: flex; /* 中のテキストを柔軟に配置するためFlexboxを使用 */
+  align-items: flex-end; /* コンテンツを縦方向に下寄せ */
+  justify-content: flex-end; /* コンテンツを横方向に右寄せ */
+  box-sizing: border-box; /* paddingを幅計算に含めてレイアウト崩れを防止 */
+  transition: background-image 0.5s;
+}
+/* hero-imgは削除してOK（HTML側でもimgタグを消す） */
+
+/* テーマ別ヒーロー画像設定例 */
+body.light .hero {
+  background-image: url("../img/hero/hero1.png") ;
+  /* no-repeat center/cover; */
+}
+
+/* ヒーローテキスト */
+.hero-text {
+  text-align: right; /* テキストを右揃え（右下配置と整合性をとる） */
+  font-family: "Cormorant Garamond", "Hina Mincho", serif; /* 英字＋和文の落ち着いたフォントを組み合わせ */
+  color: #f8f8f8; /* ベースとなる文字色（明るい白系） */
+  -webkit-text-stroke: 0.6px rgba(60, 60, 60, 0.4); /* わずかな縁取りで読みやすく */
+  text-shadow:
+    0 0 6px rgba(var(--white-color)/ 0.6), /* 柔らかい白い光のぼかし */
+    0 0 12px rgba(210, 230, 255, 0.5); /* 外側に淡い青みの光を追加 */
+  max-width: 90%; /* テキストの幅を制限して余白を確保 */
+  margin: 0 2rem 2rem 0;
+  cursor: default;       /* カーソルを通常の矢印に固定 */
+  user-select: none;     /* テキスト選択を無効化 */
+  -webkit-user-select: none; /* Safari用 */
+  -moz-user-select: none;    /* Firefox用 */
+  -ms-user-select: none;     /* IE/Edge用 */
+}
+
+/* ヒーローテキスト内のメインタイトル */
+.hero-text h1 {
+  font-size: clamp(2rem, 4vw, 3.2rem); /* 画面幅に応じて自動で文字サイズを可変（最小2rem～最大3.2rem） */
+  margin-bottom: 0.3em; /* タイトル下に少し余白を確保 */
+}
+
+/* ヒーローテキスト内のサブタイトルや説明文 */
+.hero-text p {
+  font-size: clamp(1rem, 2.2vw, 1.4rem); /* スマホではやや小さく、PCではやや大きめに自動調整 */
+  opacity: 0.9; /* 少し透明にしてやわらかく見せる */
+}
+
+/* ===== フッター ===== */
+#footer {
+  width: 100%; /* ページ幅いっぱいに広げる */
+  /*height: 800px;  ← フッター全体の高さ（余白を多く取ったデザイン） */
+  background-color: var(--footer-bg); /* カスタム変数で背景色を指定（テーマ対応） */
+  color: var(--footer-text); /* テキストの基本色 */
+  text-align: center; /* テキスト・要素を中央揃え */
+  /*padding-top: 400px;  上方向に余白（SNSアイコンやテキスト位置調整） */
+  position: relative; /* ::after（装飾ライン）を正しく配置するため */
+  box-sizing: border-box; /* paddingをサイズ計算に含めてレイアウト崩れ防止 */
+}
+
+/* ===== フッター全体 ===== */
+.footer-sitemap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2.5rem 1rem;
+  background: var(--section-bg-color, #222);
+  color: var(--footer-text, #fff);
+  text-align: center;
+  margin: 200px 10px;
+  border-radius: 16px;
+}
+
+/* ===== 中央のタイトル（サイトマップ） ===== */
+.footer-title {
+  width: 100%;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  color: var(--text-color, #fff);
+  letter-spacing: 0.05em;
+  border-bottom: 2px solid var(--bottom-color, #666);
+  padding-bottom: 0.5rem;
+}
+
+/* ===== 各グループ（横並び） ===== */
+.sitemap-group {
+  flex: 1 1 200px;
+  min-width: 180px;
+}
+
+.sitemap-group h3 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-color, #fff);
+  border-bottom: 1px solid var(--accent-color, #555);
+  padding-bottom: 0.25rem;
+}
+
+.sitemap-group ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sitemap-group li {
+  margin-bottom: 0.4rem;
+}
+
+.sitemap-group a {
+  text-decoration: none;
+  color: var(--text-color, #ccc);
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+
+.sitemap-group a:hover {
+  color: var(--accent-color, #fff);
+}
+
+/* ===== スマホ（縦並び） ===== */
+@media (max-width: 768px) {
+  .footer-sitemap {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .sitemap-group {
+    width: 100%;
+    max-width: 400px;
+    text-align: left;
+    text-align: center;
+  }
+
+  .footer-title {
+    font-size: 1.4rem;
+  }
+
+  .sitemap-group h3 {
+    font-size: 1.1rem;
+  }
+
+  .sitemap-group a {
+    font-size: 1rem;
+  }
+}
+
+/* SNSリンクのコンテナ */
+#footer .sns-links {
+  display: flex; /* 横並び配置 */
+  justify-content: center; /* 中央揃え */
+  gap: 50px; /* 各アイコンの間隔 */
+  margin-bottom: 120px; /* 下方向に余白（コピーライトとの距離を確保） */
+}
+/* SNSアイコン画像（PC用） */
+#footer .sns-links img {
+    width: var(--sns-link-img-wi); /* アイコンの横幅（CSS変数で調整可） */
+    height: var(--sns-link-img-he); /* アイコンの高さ（CSS変数で調整可） */
+    filter: brightness(0.8) invert(1); /* 明るさを抑えた白系アイコンに変換 */
+    transition: transform 0.2s ease, filter 0.2s ease; /* ホバー時の変化を滑らかに */
+  }
+
+  /* SNSアイコン画像（スマホ用） */
+@media (max-width: 768px) {
+  #footer .sns-links img {
+    width: 24px; /* 幅を小さくしてモバイル表示に対応 */
+    height: 24px;
+    filter: brightness(0.8) invert(1); /* 同じく白系で統一 */
+    transition: transform 0.2s ease, filter 0.2s ease;
+  }
+}
+
+/* SNSアイコンのホバー効果 */
+#footer .sns-links img:hover {
+  transform: translateY(-3px); /* ホバー時に少し浮かせる（インタラクション演出） */
+  filter: brightness(1.4) invert(0.8); /* 少し明るく・暖色寄りに変化 */
+}
+
+.copy{
+  margin: 25px;
+}
+
+/* フッター最下部のライン */
+#footer::after {
+  content: ""; /* 疑似要素でラインを生成 */
+  position: absolute; /* ← フッターの下端に固定 */
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%); /* 中央揃えに調整 */
+  width: 100%; /* ラインの長さ */
+  height: 10px; /* ラインの太さ */
+  background: rgba(180, 150, 255, 0.6); /* 柔らかいパープル系のグラデ調色 */
+  opacity: 0.8; /* 半透明で自然な見た目に */
+  border-radius: 4px; /* 丸みを持たせてやわらかい印象に */
+}
+
+/* ===== レスポンシブ ===== */
+@media (max-width: 768px) {
+
+   /* ヘッダーを縦並びに変更（ロゴとメニューが縦方向に配置される） */
+  #header {
+    flex-direction: column; /* 横並び → 縦並び */
+    height: auto; /* 高さを自動にして内容に合わせる */
+    padding: 10px 20px; /* 内側の余白を少し小さめに調整 */
+  }
+
+  /* ナビゲーションメニューの上部余白をリセット */
+  .main-nav {
+    margin-top: 0px;
+  }
+
+  /* ヒーローセクションの見出しサイズを縮小（スマホ画面向け） */
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+
+  /* ヒーローセクションの説明文も小さく */
+  .hero-text p {
+    font-size: 1rem;
+  }
+}
+
+/* =========================================
+   ▼ ハンバーガーメニュー（開閉ボタン）の設定
+   ========================================= */
+
+/* ▼ PCでは非表示 */
+#nav-toggle {
+  display: none;
+}
+
+/* ▼ スマホ（768px以下）で表示 */
+@media (max-width: 768px) {
+  #nav-toggle {
+    display: block; /* スマホ時のみ表示 */
+    position: absolute; /* ヘッダー内の右上に固定配置 */
+    right: 20px; /* 右端から20pxの位置 */
+    /* top: 30px; */
+    background: none; /* 背景なし（透過） */
+    border: none; /* 枠線なし */
+    font-size: 2rem; /* 大きめのアイコンサイズ */
+    color: var(--text-color); /* テーマ変数で文字色統一 */
+    cursor: pointer; /* クリック可能に */
+    z-index: 2000; /* メニューより前面に */
+  }
+
+  /* ナビゲーション初期状態は非表示 */
+  .main-nav {
+    display: none; /* 初期は非表示 */
+    flex-direction: column; /* 縦方向に並べる */
+    background: var(--header-bg); /* 背景色をヘッダーと同じに */
+    width: 100%; /* 画面幅いっぱいに表示 */
+    text-align: center; /* メニュー項目を中央寄せ */
+    position: absolute; /* ヘッダーの下に重ねて表示 */
+    top: calc(var(--header-height) * 0.9); /* ヘッダーの直下位置 */
+    left: 0;
+    z-index: 900; /* 背景より上、ハンバーガーより下 */
+  }
+
+  /* メニューが開いている状態 */
+  .main-nav.active {
+    display: flex; /* display:none → flex にしてメニューを表示 */
+  }
+
+  /* ナビゲーションリストのレイアウト */
+  .main-nav ul {
+    flex-direction: column; /* 縦方向に並べる（スマホは縦型メニュー） */
+    text-align: center; /* メニュー文字を中央寄せ */
+    gap: 0; /* 各項目の間隔をリセット */
+    margin: 0;
+    padding: 0;
+  }
+
+  .main-nav li {
+    border-bottom: 1px solid rgba(var(--white-color)/ 0.2);
+  }
+
+  .dropdown-menu {
+    display: none;
+    position: static; /* ← スマホでは下に自然に出る */
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  .dropdown.open .dropdown-menu {
+    display: block;
+  }
+}
+
+@media (max-width: 500px) {
+  /* ヘッダー下の背景バー */
+  #header::after {
+    content: "";
+    position: absolute;
+    /*top: calc(var(--header-height) * 0.9);  ヘッダーの直下に表示 */
+    left: 0;
+    width: 100%;
+    height: 0px; /* 高さは調整可 */
+    background-color: var(--header-bg);
+    backdrop-filter: blur(8px); /* ヘッダーと同じぼかし効果 */
+    z-index: 999; /* ハンバーガーの下に置く */
+  }
+
+  /* ハンバーガーメニュー中央寄せ */
+  #nav-toggle {
+    position: absolute;
+    top: calc(var(--header-height)); /* ← 背景バーの中央あたりに配置 */
+    right: 20px;
+    transform: translateY(0);
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--text-color);
+    cursor: pointer;
+    z-index: 9999; /* 背景バーより前面に */
+  }
+}
+/* ↑===== 基本設定 ===== */
+
+/* ↓===== index専用 ===== */
+#main-index{
+  margin-top: calc(var(--header-height) * -1); /* ← ヘッダー高さ分だけ下げる */
+}
+
+/* トップページの紹介部分 */
+#main-index #main-about {
+  background: var(--section-bg-color);
+  backdrop-filter: blur(6px);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px var(--box-shadow);
+  padding: 40px 50px;
+  margin: 60px auto;
+  max-width: 800px;
+  text-align: center;
+}
+
+body.dark #main-index #main-about {
+  background: rgba(30, 25, 45, 0.7);
+  box-shadow: 0 4px 20px rgba(120, 100, 200, 0.25);
+}
+
+#main-index #main-about h2 {
+  font-family: "Cinzel", "Noto Serif JP", serif;
+  font-size: 1.8rem;
+  border-bottom: 1px solid var(--bottom-color);
+  /* display: inline-block; */
+  padding-bottom: 0.3em;
+  margin-bottom: 1em;
+  color: var(--text-color);
+}
+
+#main-index #main-about p {
+  font-family: "Noto Serif JP", serif;
+  font-size: 1rem;
+  color: var(--text-color);
+  line-height: 1.8;
+  margin: 1em 0;
+}
+
+#main-index #main-about p a:hover {
+  color: var(--accent-color); /* ホバー時にアクセントカラーへ変化（視覚的反応） */
+}
+/* ↑===== index専用 ===== */
+
+/* ↓===== about設定 ===== */
+/* Aboutページ専用 */
+
+#intro,
+#notice {
+  text-align: center;
+  margin-bottom: 3em;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#intro h1 {
+  font-family: "Cinzel", "Noto Serif JP", serif;
+  font-size: 2rem;
+  margin-bottom: 0.5em;
+  color: var(--text-color);
+  border-bottom: 1px solid rgba(180, 150, 255, 0.3);
+  /* display: inline-block; */
+  padding-bottom: 0.2em;
+}
+
+#intro p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-color);
+}
+
+/* 目次デザイン（他セクションと同じトーン） */
+#main-about #toc h2{
+  text-align: center;
+}
+
+#main-about #toc ul {
+  list-style: none;
+  padding-left: 0;
+  text-align: center;
+}
+
+#main-about #toc li {
+  /* display: inline-block; */
+  font-size: 1.5rem;
+  margin: 0.5em 1em;
+}
+
+#main-about #toc a {
+  text-decoration: none;
+  color: var(--text-color);
+  border-bottom: 1px dashed var(--bottom-color);
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+#main-about #toc a:hover {
+  color: rgba(150, 120, 255, 1);
+  border-color: rgba(150, 120, 255, 0.8);
+}
+
+#main-about section {
+   background: var(--section-bg-color);
+  backdrop-filter: blur(6px);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px var(--box-shadow);
+  padding: 40px 50px;
+  margin: 60px auto;
+  max-width: 800px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#main-about section:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(180, 150, 255, 0.25);
+}
+/* intro・tocにはホバー効果を適用しない */
+#main-about #intro:hover,
+#main-about #toc:hover, 
+#main-about #notice:hover {
+  transform: none;
+  box-shadow: 0 4px 20px var(--box-shadow);
+}
+
+#main-about h2 {
+  font-family: "Cinzel", "Noto Serif JP", serif;
+  font-size: 1.8rem;
+  border-bottom: 1px solid var(--bottom-color);
+  padding-bottom: 0.3em;
+  margin-bottom: 1em;
+}
+
+#main-about p,
+#main-about ul {
+  font-family: "Noto Serif JP", serif;
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+#main-about ul {
+  padding-left: 1.5em;
+  list-style-type: "— ";
+}
+
+/* ===== ギャラリーの導入セクション ===== */
+#gallery-intro {
+  /* text-align: center; */
+  padding: 4rem 2rem 2rem;
+  /* background: var(--section-bg-color); */
+  background-image: url(../img/hero/hero4.webp);
+  width: 100%; /* 横幅をウィンドウ幅いっぱいに */
+}
+
+/* テーマ別ヒーロー画像設定例 */
+body.light #gallery-intro {
+  background-image: url("../img/hero/hero1.webp") ;
+  /* no-repeat center/cover; */
+}
+
+#gallery-intro h1 {
+  font-size: 2.5rem;
+  font-family: "Cinzel", "Shippori Mincho B1", serif;
+  margin-bottom: 1rem;
+  margin: 0 8rem;
+}
+
+#gallery-intro p {
+  font-size: 1.1rem;
+  color: var(--text-color);
+  max-width: 700px;
+  line-height: 1.8;
+  margin: 0 8rem;
+}
+
+/* ===== ギャラリーの配置設定 ===== */
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  padding: 5rem 8rem; /* ← 左右に2remの余白を追加 */
+  box-sizing: border-box; /* 忘れずに！ */
+  justify-items: center;
+  align-items: start;
+}
+
+/* 各カード */
+.work-item {
+  background: var(--bg-color);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(var(--hover-color)/0.1);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  width: 100%;
+  max-width: 300px;
+}
+
+.work-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(var(--hover-color)/0.15);
+}
+
+/* 画像全体がリンク */
+.work-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  position: relative;
+}
+
+/* サムネイル画像 */
+.work-link img {
+  background-color: #fff;
+  width: 100%;
+  display: block;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;   /* ← 全体を収める（トリミングしない） */
+}
+
+/* タイトル（Pixiv風に下部に） */
+.work-item h3 {
+  font-size: 1rem;
+  text-align: left;
+  padding: 0.6rem 0.4rem;
+  background: var(--section-bg-color);
+  font-family: "Shippori Mincho B1", "Noto Serif JP", serif;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;        /* 改行を禁止する */
+  overflow: hidden;           /* はみ出た部分を隠す */
+  text-overflow: ellipsis;    /* 「…」を表示する */
+}
+
+.work-item:hover h3 {
+  background: var(--item-color);
+}
+
+/* ===== 作品詳細ページ ===== */
+
+#main-detail {
+  display: flex;
+  justify-content: center;
+  padding: 0rem 1rem;
+  background-color: var(--bg-color);
+}
+
+#works-detail{
+  background-color: var(--section-bg-color);
+  padding: 4rem 2rem;
+}
+
+.work-detail {
+  max-width: 960px;   /* ← ページ全体の最大幅（Pixivっぽい横幅） */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* 作品画像 */
+.work-image {
+  width: 100%;
+  height: auto;
+  max-height: 80vh;   /* 画面縦の8割までに制限 */
+  object-fit: contain;
+  background-color: #fff; /* 余白部分の背景 */
+  /* border-radius: 8px; */
+  box-shadow: 0 2px 12px rgba(var(--hover-color)0.1);
+  user-select: none;       /* 選択不可 */
+  pointer-events: none;    /* クリックやドラッグを無効化 */
+  -webkit-user-drag: none; /* Chrome/Safariでドラッグ禁止 */
+}
+
+/* タイトル・説明部分 */
+.work-info {
+  width: 100%;
+  text-align: left;
+  color: var(--text-color);
+}
+
+.work-title {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.work-desc {
+  line-height: 1.8;
+  color: var(--text-color);
+  font-size: 1.05rem;
+  width: 80%;
+}
+
+/* ===== コンタクトの配置設定 ===== */
+#main-contact {
+  max-width: 800px;
+  margin: 120px auto 100px;
+  padding: 0 2rem;
+  font-family: "Noto Serif JP", serif;
+  line-height: 1.8;
+}
+
+#main-contact h1 {
+  font-size: 2rem;
+  border-bottom: 2px solid rgba(180, 150, 255, 0.4);
+  padding-bottom: 0.3em;
+  margin-bottom: 1.5em;
+  text-align: center;
+}
+
+#main-contact h2 {
+  font-size: 1.4rem;
+  margin-top: 2.5em;
+  border-left: 4px solid var(--bottom-color);
+  padding-left: 0.5em;
+}
+
+#main-contact p,
+#main-contact li {
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+#main-contact ul {
+  padding-left: 1.5em;
+  list-style-type: "– ";
+}
+
+#main-contact .sns-list li {
+  margin: 0.4em 0;
+  font-size: 1.5rem;
+}
+
+#main-contact .sns-list a {
+  color: #4a3fa3;
+  text-decoration: none;
+}
+
+#main-contact .sns-list a:hover {
+  text-decoration: underline;
+}
+
+#main-contact .mail-link {
+  display: inline-block;
+  color: #4a3fa3;
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 1px dotted rgba(180, 150, 255, 0.7);
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+#main-contact .mail-link:hover {
+  color: #2f2685;
+  border-color: rgba(120, 100, 255, 0.9);
+}
+
+#main-contact .note {
+  font-size: 0.9rem;
+  color: var(--text-color);
+  margin-top: 0.5em;
+}

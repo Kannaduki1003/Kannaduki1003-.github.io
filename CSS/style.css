@@ -718,6 +718,7 @@ body.dark #main-index #main-about {
   /* background: var(--section-bg-color); */
   background-image: url(../img/hero/hero4.webp);
   width: 100%; /* 横幅をウィンドウ幅いっぱいに */
+  background-size: cover;
 }
 
 /* テーマ別ヒーロー画像設定例 */
@@ -928,4 +929,5 @@ body.light #gallery-intro {
   font-size: 0.9rem;
   color: var(--text-color);
   margin-top: 0.5em;
+
 }
